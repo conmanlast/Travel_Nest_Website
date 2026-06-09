@@ -119,7 +119,7 @@ function openModal(dest) {
         
         <h4>Popular Attractions:</h4>
         <ul>
-            ${dest.attractions.map(attr => `<li>${attr}</li>`).join('')}
+            ${dest.attractions.map(attr => `<li> ${attr}</li>`).join('')}
         </ul>
 
         <h4>Cost Comparison:</h4>
@@ -134,7 +134,7 @@ function openModal(dest) {
             </table>
         </div>
     `;
-    modal.style.display = "block";
+    modal.style.display = "flex";
 }
 
 // Event Listeners

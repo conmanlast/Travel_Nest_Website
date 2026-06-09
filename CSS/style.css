@@ -817,35 +817,51 @@ h1, h2, h3 {
     margin-top: 1rem;
 }
 
-/* ============================================================
-   MOBILE MODAL & TABLE FIX (OVERRIDE)
-   Pasted at the end to ensure it overrides all previous rules
-   ============================================================ */
+/* 1. The Modal Overlay */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100vw; /* Force exactly 100% of viewport width */
+    height: 100vh;
+    background-color: rgba(0,0,0,0.8);
+    backdrop-filter: blur(5px);
+    overflow: hidden; /* Prevent the background from scrolling */
+}
 
-/* 1. Force the table wrapper to allow horizontal scrolling */
+/* 2. The Modal Box - THE WALL LOCK */
+.modal-content {
+    background-color: var(--white);
+    margin: 5% auto;
+    padding: 2rem;
+    width: 90% !important;      /* Force width */
+    max-width: 700px !important; /* Cap it at 700px for desktop */
+    border-radius: 20px;
+    position: relative;
+    box-sizing: border-box !important; 
+    overflow: hidden !important; /* THIS STOPS THE CHILD FROM PUSHING THE WALLS */
+    animation: slideDown 0.4s ease;
+}
+
+/* 3. The Scrollable Wrapper */
 .table-responsive {
     width: 100% !important;
-    overflow-x: auto !important;
+    overflow-x: auto !important; /* Now this will actually work because the parent is locked */
     display: block !important;
-    -webkit-overflow-scrolling: touch;
     margin-top: 1rem;
+    border: 1px solid #eee;
 }
 
-/* 2. Force the modal content to stay within screen bounds */
-.modal-content {
-    max-width: 90% !important; 
-    width: 90% !important;
-    margin: 20px auto !important;
-    box-sizing: border-box !important; 
-}
-
-/* 3. Prevent the table from pushing the modal width */
+/* 4. The Table - Force it to be flexible */
 .cost-table {
     width: 100% !important;
-    table-layout: auto !important; 
+    border-collapse: collapse;
+    table-layout: auto !important; /* Allow it to size based on content */
 }
 
-/* 4. Specific Mobile Overrides */
+/* 5. Mobile Specifics */
 @media (max-width: 768px) {
     .modal-content {
         width: 95% !important;
@@ -854,8 +870,65 @@ h1, h2, h3 {
     }
     
     .cost-table th, .cost-table td {
-        min-width: 80px !important; 
-        font-size: 12px !important;
-        padding: 5px !important;
+        min-width: 100px !important; /* Ensures the table stays wide enough to be readable */
+        font-size: 13px !important;
+    }
+}
+
+/* 1. The Modal Overlay - Now a Flexbox Container */
+.modal {
+    display: none; /* JS will change this to 'flex' */
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.8);
+    backdrop-filter: blur(5px);
+    
+    /* CENTER EVERYTHING INSIDE */
+    display: none; /* Keep as none, but JS will trigger 'flex' */
+    justify-content: center; 
+    align-items: center;
+    overflow: hidden;
+}
+
+/* 2. The Modal Box - No more top margins! */
+.modal-content {
+    background-color: var(--white);
+    padding: 2rem;
+    width: 90% !important;
+    max-width: 700px !important;
+    border-radius: 20px;
+    position: relative;
+    box-sizing: border-box !important; 
+    overflow-y: auto !important; /* Allows internal scrolling if content is too long */
+    max-height: 90vh !important;  /* Prevents the modal from being taller than the screen */
+    animation: slideDown 0.4s ease;
+    
+    /* REMOVE the margin: 5% auto; that was causing the "top" issue */
+    margin: 0 !important; 
+}
+
+/* --- MODAL LIST STYLING --- */
+
+/* Target the list inside the modal content */
+.modal-content ul {
+    padding-left: 1.5rem !important; /* Pushes the bullets away from the left edge */
+    margin: 1rem 0 1.5rem 0 !important; /* Adds space above and below the list */
+    list-style-position: inside; /* Ensures bullets stay inside the box */
+}
+
+.modal-content li {
+    margin-bottom: 0.5rem; /* Adds a little gap between each attraction */
+    font-family: var(--body-font);
+    color: #444;
+}
+
+/* Adjust specifically for mobile if needed */
+@media (max-width: 768px) {
+    .modal-content ul {
+        padding-left: 1.2rem !important; /* Slightly smaller indent for tiny screens */
     }
 }
