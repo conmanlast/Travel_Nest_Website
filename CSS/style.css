@@ -845,6 +845,8 @@ h1, h2, h3 {
     animation: slideDown 0.4s ease;
 }
 
+
+
 /* 3. The Scrollable Wrapper */
 .table-responsive {
     width: 100% !important;
@@ -932,3 +934,4 @@ h1, h2, h3 {
         padding-left: 1.2rem !important; /* Slightly smaller indent for tiny screens */
     }
 }
+
