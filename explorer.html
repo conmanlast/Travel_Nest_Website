@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelNest | Explore Destinations</title>
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playwrite+GB+J:wght@100..400&display=swap" rel="stylesheet">
+
+    <!-- CSS LINK -->
+    <link rel="stylesheet" href="CSS/style.css">
+
+    <!-- PWA MANIFEST -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="assets/Icons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="assets/Icons/favicon.svg" />
+    <link rel="shortcut icon" href="assets/Icons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/Icons/apple-touch-icon.png" />
+    <link rel="manifest" href="assets/Icons/site.webmanifest" />
+</head>
+<body>
+
+    <!-- NAVIGATION (From Phase 2) -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Travel<span>Nest</span></a>
+            
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="explorer.html" class="active">Explorer</a></li>
+                <li><a href="budget.html">Budget</a></li>
+                <li><a href="generator.html">Random Trip</a></li>
+                <li><a href="mood.html">Mood</a></li>
+                <li><a href="support.html">Support</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="explorer-page">
+        <section class="explorer-header">
+            <h1>Explore Destinations</h1>
+            <p>Find your next great adventure</p>
+
+            <div class="filter-container">
+                <!-- ID MUST BE 'search-input' for the JS to find it -->
+                <input type="text" id="search-input" placeholder="Search by destination name...">
+                
+                <!-- ID MUST BE 'continent-filter' for the JS to find it -->
+                <select id="continent-filter">
+                    <option value="all">All Continents</option>
+                    <option value="Asia">Asia</option>
+                    <option value="Europe">Europe</option>
+                    <option value="Africa">Africa</option>
+                    <option value="North America">North America</option>
+                    <option value="South America">South America</option>
+                    <option value="Oceania">Oceania</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- ID MUST BE 'destinations-grid' - This is where JS puts the cards -->
+        <section class="destinations-grid" id="destinations-grid">
+            <!-- JS will inject cards here -->
+        </section>
+    </main>
+
+    <!-- THE MODAL WINDOW (Hidden by default) -->
+    <!-- ID MUST BE 'destination-modal' -->
+    <div id="destination-modal" class="modal">
+        <div class="modal-content">
+            <!-- CLASS MUST BE 'close-modal' -->
+            <span class="close-modal">&times;</span>
+            <!-- ID MUST BE 'modal-body' -->
+            <div id="modal-body">
+                <!-- JS will inject destination details here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER (From Phase 2) -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-about">
+                <h3>TravelNest</h3>
+                <p>Making travel planning enjoyable, visual, and stress-free for everyone.</p>
+            </div>
+            
+            <div class="footer-newsletter">
+                <h4>Subscribe to our Newsletter</h4>
+                <form id="newsletter-form">
+                    <input type="email" id="newsletter-email" placeholder="Enter your email" required>
+                    <button type="submit">Join</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 TravelNest. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LINKS (CRITICAL ORDER) -->
+    <!-- 1. Data file must be first! -->
+    <script src="JS/data.js"></script>
+    
+    <!-- 2. Utils second -->
+    <script src="JS/utils.js"></script>
+    
+    <!-- 3. Main logic last -->
+    <script src="JS/main.js"></script>
+
+</body>
+</html>

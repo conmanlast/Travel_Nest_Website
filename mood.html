@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelNest | Explore Destinations</title>
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playwrite+GB+J:wght@100..400&display=swap" rel="stylesheet">
+
+    <!-- CSS LINK -->
+    <link rel="stylesheet" href="CSS/style.css">
+
+    <!-- PWA MANIFEST -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="assets/Icons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="assets/Icons/favicon.svg" />
+    <link rel="shortcut icon" href="assets/Icons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/Icons/apple-touch-icon.png" />
+    <link rel="manifest" href="assets/Icons/site.webmanifest" />
+</head>
+<body>
+
+    <!-- NAVIGATION (From Phase 2) -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Travel<span>Nest</span></a>
+            
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="explorer.html">Explorer</a></li>
+                <li><a href="budget.html">Budget</a></li>
+                <li><a href="generator.html">Random Trip</a></li>
+                <li><a href="mood.html" class="active">Mood</a></li>
+                <li><a href="support.html">Support</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="mood-page">
+    <section class="mood-container">
+        <h1>Travel Mood</h1>
+        <p>Set the vibe and track your journey.</p>
+
+        <!-- AMBIENT SOUNDS SECTION -->
+        <div class="sound-board">
+            <h3>Ambient Sounds</h3>
+            <div class="sound-buttons">
+                <button class="sound-btn" data-sound="beach">🏖️ Beach</button>
+                <button class="sound-btn" data-sound="forest">🌲 Forest</button>
+                <button class="sound-btn" data-sound="city">🏙️ City</button>
+                <button class="sound-btn" id="stop-sound">🔇 Stop All</button>
+            </div>
+            <p id="sound-status">Currently: Silence</p>
+        </div>
+
+        <!-- TRIP TRACKER SECTION -->
+        <div class="trip-tracker">
+            <h3>My Travel Journey</h3>
+            <p>Mark destinations as planned or visited.</p>
+            
+            <div id="tracker-list" class="tracker-list">
+                <!-- Destination rows will be injected by JS -->
+            </div>
+        </div>
+    </section>
+</main>
+
+    <!-- JAVASCRIPT LINKS (CRITICAL ORDER) -->
+    <!-- 1. Data file must be first! -->
+    <script src="JS/data.js"></script>
+    
+    <!-- 2. Utils second -->
+    <script src="JS/utils.js"></script>
+    
+    <!-- 3. Main logic last -->
+    <script src="JS/main.js"></script>
+
+</body>
+</html>

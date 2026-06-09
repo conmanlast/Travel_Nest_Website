@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelNest | Explore the World</title>
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playwrite+GB+J:wght@100..400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="CSS/style.css">
+
+    <link rel="manifest" href="manifest.json">
+
+    <link rel="icon" type="image/png" href="assets/Icons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="assets/Icons/favicon.svg" />
+    <link rel="shortcut icon" href="assets/Icons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/Icons/apple-touch-icon.png" />
+    <link rel="manifest" href="assets/Icons/site.webmanifest" />
+
+</head>
+<body>
+
+    
+
+    <nav class="navbar">
+    <div class="nav-container">
+        <a href="index.html" class="logo">Travel<span>Nest</span></a>
+        
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="explorer.html">Explorer</a></li>
+            <li><a href="budget.html">Budget</a></li>
+            <li><a href="generator.html">Random Trip</a></li>
+            <li><a href="mood.html">Mood</a></li>
+            <li><a href="support.html">Support</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main>
+
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-text">
+                <h1 id="rotating-quota">"Adventure awaits...."</h1>
+                <p>Plan your dream getaway with TravelNest. Explore the unseen, visit the unknown.</p>
+                <a href="explorer.html" class="btn-primary">Start Exploring</a>
+
+            </div>
+            <div class="hero-image">
+                <img src="assets/Images/Destination.jpg" alt="Beautiful Travel Destination" id="hero-img">
+            </div>
+        </div>
+    </section>
+
+    <section class="daily-destination">
+        <h2>Destination of the Day</h2>
+        <div id="daily-card" class="daily-card">
+
+            <p>Loading today's adventure....</p>
+        </div> 
+    </section>
+</main>
+    
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-about">
+            <h3>TravelNest</h3>
+            <p>Making travel planning enjoyable, visual, and stress-free for everyone.</p>
+        </div>
+        
+        <div class="footer-newsletter">
+            <h4>Subscribe to our Newsletter</h4>
+            <form id="newsletter-form">
+                <input type="email" id="newsletter-email" placeholder="Enter your email" required>
+                <button type="submit">Join</button>
+            </form>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 TravelNest. All rights reserved.</p>
+    </div>
+</footer>
+
+
+
+
+
+    <script src="JS/Data.js"></script>
+    <script src="JS/utils.js"></script>
+    <script src="JS/main.js"></script>
+</body>
+</html>

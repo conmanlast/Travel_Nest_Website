@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelNest | Explore Destinations</title>
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playwrite+GB+J:wght@100..400&display=swap" rel="stylesheet">
+
+    <!-- CSS LINK -->
+    <link rel="stylesheet" href="CSS/style.css">
+
+    <!-- PWA MANIFEST -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="assets/Icons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="assets/Icons/favicon.svg" />
+    <link rel="shortcut icon" href="assets/Icons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/Icons/apple-touch-icon.png" />
+    <link rel="manifest" href="assets/Icons/site.webmanifest" />
+</head>
+<body>
+
+    <!-- NAVIGATION (From Phase 2) -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Travel<span>Nest</span></a>
+            
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="explorer.html">Explorer</a></li>
+                <li><a href="budget.html">Budget</a></li>
+                <li><a href="generator.html" class="active">Random Trip</a></li>
+                <li><a href="mood.html">Mood</a></li>
+                <li><a href="support.html">Support</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="generator-page">
+    <section class="generator-container">
+        <h1>Random Trip Generator</h1>
+        <p>Can't decide where to go? Let us choose for you!</p>
+
+        <div class="generator-card">
+            <div class="generator-controls">
+                <!-- Dropdown 1: Travel Type -->
+                <div class="control-group">
+                    <label for="travel-type">I'm looking for...</label>
+                    <select id="travel-type">
+                        <option value="adventure">Adventure</option>
+                        <option value="relaxation">Relaxation</option>
+                        <option value="cultural">Cultural</option>
+                        <option value="nature">Nature</option>
+                    </select>
+                </div>
+
+                <!-- Dropdown 2: Budget Range -->
+                <div class="control-group">
+                    <label for="budget-range">My budget is...</label>
+                    <select id="budget-range">
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+
+                <button id="surprise-btn" class="btn-primary">Surprise Me!</button>
+            </div>
+
+            <!-- RESULT AREA -->
+            <div id="generator-result" class="result-area" style="display: none;">
+                <div class="result-content">
+                    <img src="" id="result-img" alt="Suggested Destination">
+                    <div class="result-text">
+                        <h2 id="result-name">Destination Name</h2>
+                        <p id="result-desc">Description goes here...</p>
+                        <button id="save-wishlist-btn" class="btn-secondary">❤️ Add to Wishlist</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- WISHLIST SECTION -->
+        <section class="wishlist-section">
+            <h3>My Personal Wishlist</h3>
+            <div id="wishlist-grid" class="wishlist-grid">
+                <!-- Wishlist items injected by JS -->
+                <p class="empty-msg">Your wishlist is empty. Start exploring!</p>
+            </div>
+        </section>
+    </section>
+</main>
+
+    <!-- JAVASCRIPT LINKS (CRITICAL ORDER) -->
+    <!-- 1. Data file must be first! -->
+    <script src="JS/data.js"></script>
+    
+    <!-- 2. Utils second -->
+    <script src="JS/utils.js"></script>
+    
+    <!-- 3. Main logic last -->
+    <script src="JS/main.js"></script>
+
+</body>
+</html>
