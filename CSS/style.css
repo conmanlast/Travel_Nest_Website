@@ -603,6 +603,22 @@ h1, h2, h3 {
 
 @media (max-width: 768px) {
     .result-content { grid-template-columns: 1fr; }
+
+    .modal-content {
+        width: 95%;         /* Use almost the whole screen */
+        margin: 10% auto;   /* Center it slightly better */
+        padding: 1.5rem;    /* Reduce padding so there is more room for text */
+    }
+
+    .modal-content h2 {
+        font-size: 1.5rem;  /* Shrink the title so it doesn't wrap awkwardly */
+    }
+    
+    /* Ensure the table cells don't get too squashed */
+    .cost-table th, .cost-table td {
+        min-width: 100px; 
+        font-size: 0.9rem;
+    }
 }
 
 
@@ -807,29 +823,10 @@ h1, h2, h3 {
 }
 
 
-/* 1. Make the table scrollable on mobile */
+/* TABLE RESPONSIVENESS FIX */
 .table-responsive {
     width: 100%;
-    overflow-x: auto; /* This creates the horizontal scrollbar if the table is too wide */
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iPhones */
+    overflow-x: auto; 
+    -webkit-overflow-scrolling: touch; 
     margin-top: 1rem;
-}
-
-/* 2. Fix Modal sizing for mobile */
-@media (max-width: 768px) {
-    .modal-content {
-        width: 95%;         /* Use almost the whole screen */
-        margin: 10% auto;   /* Center it slightly better */
-        padding: 1.5rem;    /* Reduce padding so there is more room for text */
-    }
-
-    .modal-content h2 {
-        font-size: 1.5rem;  /* Shrink the title so it doesn't wrap awkwardly */
-    }
-    
-    /* Ensure the table cells don't get too squashed */
-    .cost-table th, .cost-table td {
-        min-width: 100px; 
-        font-size: 0.9rem;
-    }
 }
