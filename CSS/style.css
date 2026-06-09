@@ -24,6 +24,10 @@
     box-sizing: border-box;
 }
 
+html {
+    overflow-x: hidden; /* fix: off-screen mobile menu caused horizontal scroll */
+}
+
 body {
     font-family: var(--body-font);
     background-color: var(--light-bg);
@@ -107,7 +111,7 @@ h1, h2, h3 {
     .nav-links {
         position: absolute;
         top: 70px;
-        right: -100%; /* Start hidden off-screen */
+        left: -100%; /* fix: hiding off the right edge doubled the page width */
         flex-direction: column;
         background-color: var(--white);
         width: 100%;
@@ -118,7 +122,7 @@ h1, h2, h3 {
     }
 
     .nav-links.active {
-        right: 0; /* Slide in */
+        left: 0; /* Slide in */
     }
 }
 
@@ -279,14 +283,14 @@ h1, h2, h3 {
     font-size: 1rem;
 }
 
-#search-input { width: 300px; }
+#search-input { width: 300px; max-width: 100%; }
 
 /* DESTINATION CARDS GRID */
 .destinations-grid {
     max-width: 1200px;
     margin: 3rem auto;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr)); /* fix: cards overflowed on small screens */
     gap: 2rem;
     padding: 0 2rem;
 }
@@ -329,6 +333,7 @@ h1, h2, h3 {
     height: 100%;
     background-color: rgba(0,0,0,0.7);
     backdrop-filter: blur(5px);
+    overflow-y: auto; /* fix: modal taller than phone screen was clipped */
 }
 
 .modal-content {
@@ -603,8 +608,6 @@ h1, h2, h3 {
 
 @media (max-width: 768px) {
     .result-content { grid-template-columns: 1fr; }
-
-   
 }
 
 
@@ -809,129 +812,29 @@ h1, h2, h3 {
 }
 
 
-/* TABLE RESPONSIVENESS FIX */
+/* 1. Make the table scrollable on mobile */
 .table-responsive {
     width: 100%;
-    overflow-x: auto; 
-    -webkit-overflow-scrolling: touch; 
+    overflow-x: auto; /* This creates the horizontal scrollbar if the table is too wide */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iPhones */
     margin-top: 1rem;
 }
 
-/* 1. The Modal Overlay */
-.modal {
-    display: none; 
-    position: fixed;
-    z-index: 9999;
-    left: 0;
-    top: 0;
-    width: 100vw; /* Force exactly 100% of viewport width */
-    height: 100vh;
-    background-color: rgba(0,0,0,0.8);
-    backdrop-filter: blur(5px);
-    overflow: hidden; /* Prevent the background from scrolling */
-}
-
-/* 2. The Modal Box - THE WALL LOCK */
-.modal-content {
-    background-color: var(--white);
-    margin: 5% auto;
-    padding: 2rem;
-    width: 90% !important;      /* Force width */
-    max-width: 700px !important; /* Cap it at 700px for desktop */
-    border-radius: 20px;
-    position: relative;
-    box-sizing: border-box !important; 
-    overflow: hidden !important; /* THIS STOPS THE CHILD FROM PUSHING THE WALLS */
-    animation: slideDown 0.4s ease;
-}
-
-
-
-/* 3. The Scrollable Wrapper */
-.table-responsive {
-    width: 100% !important;
-    overflow-x: auto !important; /* Now this will actually work because the parent is locked */
-    display: block !important;
-    margin-top: 1rem;
-    border: 1px solid #eee;
-}
-
-/* 4. The Table - Force it to be flexible */
-.cost-table {
-    width: 100% !important;
-    border-collapse: collapse;
-    table-layout: auto !important; /* Allow it to size based on content */
-}
-
-/* 5. Mobile Specifics */
+/* 2. Fix Modal sizing for mobile */
 @media (max-width: 768px) {
     .modal-content {
-        width: 95% !important;
-        padding: 1rem !important;
-        margin: 10% auto !important;
+        width: 95%;         /* Use almost the whole screen */
+        margin: 10% auto;   /* Center it slightly better */
+        padding: 1.5rem;    /* Reduce padding so there is more room for text */
+    }
+
+    .modal-content h2 {
+        font-size: 1.5rem;  /* Shrink the title so it doesn't wrap awkwardly */
     }
     
+    /* Ensure the table cells don't get too squashed */
     .cost-table th, .cost-table td {
-        min-width: 100px !important; /* Ensures the table stays wide enough to be readable */
-        font-size: 13px !important;
+        min-width: 100px; 
+        font-size: 0.9rem;
     }
 }
-
-/* 1. The Modal Overlay - Now a Flexbox Container */
-.modal {
-    display: none; /* JS will change this to 'flex' */
-    position: fixed;
-    z-index: 9999;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0,0,0,0.8);
-    backdrop-filter: blur(5px);
-    
-    /* CENTER EVERYTHING INSIDE */
-    display: none; /* Keep as none, but JS will trigger 'flex' */
-    justify-content: center; 
-    align-items: center;
-    overflow: hidden;
-}
-
-/* 2. The Modal Box - No more top margins! */
-.modal-content {
-    background-color: var(--white);
-    padding: 2rem;
-    width: 90% !important;
-    max-width: 700px !important;
-    border-radius: 20px;
-    position: relative;
-    box-sizing: border-box !important; 
-    overflow-y: auto !important; /* Allows internal scrolling if content is too long */
-    max-height: 90vh !important;  /* Prevents the modal from being taller than the screen */
-    animation: slideDown 0.4s ease;
-    
-    /* REMOVE the margin: 5% auto; that was causing the "top" issue */
-    margin: 0 !important; 
-}
-
-/* --- MODAL LIST STYLING --- */
-
-/* Target the list inside the modal content */
-.modal-content ul {
-    padding-left: 1.5rem !important; /* Pushes the bullets away from the left edge */
-    margin: 1rem 0 1.5rem 0 !important; /* Adds space above and below the list */
-    list-style-position: inside; /* Ensures bullets stay inside the box */
-}
-
-.modal-content li {
-    margin-bottom: 0.5rem; /* Adds a little gap between each attraction */
-    font-family: var(--body-font);
-    color: #444;
-}
-
-/* Adjust specifically for mobile if needed */
-@media (max-width: 768px) {
-    .modal-content ul {
-        padding-left: 1.2rem !important; /* Slightly smaller indent for tiny screens */
-    }
-}
-
