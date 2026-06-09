@@ -123,14 +123,16 @@ function openModal(dest) {
         </ul>
 
         <h4>Cost Comparison:</h4>
-        <table class="cost-table">
-            <tr><th>Budget</th><th>Moderate</th><th>Luxury</th></tr>
-            <tr>
-                <td>${dest.costs.budget}</td>
-                <td>${dest.costs.moderate}</td>
-                <td>${dest.costs.luxury}</td>
-            </tr>
-        </table>
+        <div class="table-responsive">
+            <table class="cost-table">
+                <tr><th>Budget</th><th>Moderate</th><th>Luxury</th></tr>
+                <tr>
+                    <td>${dest.costs.budget}</td>
+                    <td>${dest.costs.moderate}</td>
+                    <td>${dest.costs.luxury}</td>
+                </tr>
+            </table>
+        </div>
     `;
     modal.style.display = "block";
 }
