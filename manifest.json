@@ -1,0 +1,23 @@
+
+{
+  "short_name": "TravelNest",
+  "name": "TravelNest Trip Planner",
+  "icons": [
+    {
+      "src": "assets/Icons/web-app-manifest-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "assets/Icons/web-app-manifest-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/index.html",
+  "background_color": "#f8f9fa",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#0077b6",
+  "description": "A professional tool to explore destinations and plan trip budgets."
+}

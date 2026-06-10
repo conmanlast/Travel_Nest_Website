@@ -5,27 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TravelNest | Explore Destinations</title>
 
-    <!-- GOOGLE FONTS -->
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playwrite+GB+J:wght@100..400&display=swap" rel="stylesheet">
 
-    <!-- CSS LINK -->
+    
     <link rel="stylesheet" href="CSS/style.css">
 
-    <!-- PWA MANIFEST -->
+    
     <link rel="manifest" href="manifest.json">
 
-    <!-- FAVICON -->
-    <link rel="icon" type="image/png" href="assets/Icons/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="assets/Icons/favicon.svg" />
-    <link rel="shortcut icon" href="assets/Icons/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/Icons/apple-touch-icon.png" />
-    <link rel="manifest" href="assets/Icons/site.webmanifest" />
+    
+    <link rel="icon" type="image/png" href="assets/Icons/favicon-96x96.png" sizes="96x96" >
+    <link rel="icon" type="image/svg+xml" href="assets/Icons/favicon.svg" >
+    <link rel="shortcut icon" href="assets/Icons/favicon.ico" >
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/Icons/apple-touch-icon.png" >
+    <link rel="manifest" href="assets/Icons/site.webmanifest" >
 </head>
 <body>
 
-    <!-- NAVIGATION (From Phase 2) -->
+    
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">Travel<span>Nest</span></a>
@@ -47,14 +47,14 @@
         </div>
     </nav>
 
-    <!-- MAIN CONTENT -->
+    
     <main class="budget-page">
     <section class="budget-container">
         <h1>Trip Budget Planner</h1>
         <p>Estimate your expenses and see your budget status.</p>
 
         <div class="budget-wrapper">
-            <!-- INPUT FORM -->
+            
             <form id="budget-form" class="budget-form">
                 <div class="input-group">
                     <label for="dest-name">Destination</label>
@@ -71,7 +71,7 @@
                 <button type="submit" class="btn-primary">Calculate Budget</button>
             </form>
 
-            <!-- RESULTS AREA -->
+            
             <div id="budget-results" class="results-area" style="display: none;">
                 <h2>Estimated Total: <span id="total-cost">$0</span></h2>
                 <p>Budget Status: <strong id="budget-status">-</strong></p>
@@ -85,7 +85,7 @@
             </div>
         </div>
 
-        <!-- SAVED BUDGETS LIST -->
+        
         <section class="saved-budgets">
             <h3>Your Saved Budgets</h3>
             <div id="saved-budgets-list" class="budgets-list">
@@ -96,14 +96,14 @@
     </section>
 </main>
 
-    <!-- JAVASCRIPT LINKS (CRITICAL ORDER) -->
-    <!-- 1. Data file must be first! -->
+    
+    
     <script src="JS/data.js"></script>
     
-    <!-- 2. Utils second -->
+    
     <script src="JS/utils.js"></script>
     
-    <!-- 3. Main logic last -->
+    
     <script src="JS/main.js"></script>
 
 </body>
