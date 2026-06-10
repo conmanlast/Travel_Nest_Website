@@ -25,7 +25,7 @@
 }
 
 html {
-    overflow-x: hidden; /* fix: off-screen mobile menu caused horizontal scroll */
+    overflow-x: hidden; 
 }
 
 body {
@@ -111,7 +111,7 @@ h1, h2, h3 {
     .nav-links {
         position: absolute;
         top: 70px;
-        left: -100%; /* fix: hiding off the right edge doubled the page width */
+        left: -100%; 
         flex-direction: column;
         background-color: var(--white);
         width: 100%;
@@ -122,7 +122,7 @@ h1, h2, h3 {
     }
 
     .nav-links.active {
-        left: 0; /* Slide in */
+        left: 0; 
     }
 }
 
@@ -251,7 +251,7 @@ h1, h2, h3 {
 /* RESPONSIVE HERO */
 @media (max-width: 768px) {
     .hero-container {
-        grid-template-columns: 1fr; /* Stack on mobile */
+        grid-template-columns: 1fr; 
         text-align: center;
     }
     
@@ -290,7 +290,7 @@ h1, h2, h3 {
     max-width: 1200px;
     margin: 3rem auto;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr)); /* fix: cards overflowed on small screens */
+    grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr)); 
     gap: 2rem;
     padding: 0 2rem;
 }
@@ -324,7 +324,7 @@ h1, h2, h3 {
 
 /* THE MODAL */
 .modal {
-    display: none; /* Hidden by default */
+    display: none; 
     position: fixed;
     z-index: 2000;
     left: 0;
@@ -333,7 +333,7 @@ h1, h2, h3 {
     height: 100%;
     background-color: rgba(0,0,0,0.7);
     backdrop-filter: blur(5px);
-    overflow-y: auto; /* fix: modal taller than phone screen was clipped */
+    overflow-y: auto; 
 }
 
 .modal-content {
@@ -438,7 +438,7 @@ h1, h2, h3 {
 
 .progress-bar {
     height: 100%;
-    width: 0%; /* Starts at 0, JS will change this */
+    width: 0%; 
     background: var(--accent-color);
     transition: width 1s ease-in-out;
 }
@@ -700,7 +700,7 @@ h1, h2, h3 {
 }
 
 .status-btn.visited {
-    background: #c8e6c9; /* Light green */
+    background: #c8e6c9; 
     border-color: #4caf50;
 }
 
@@ -745,7 +745,7 @@ h1, h2, h3 {
 .error-msg {
     color: #e76f51;
     font-size: 0.8rem;
-    display: none; /* Hidden by default */
+    display: none; 
 }
 
 .success-banner {
@@ -788,7 +788,7 @@ h1, h2, h3 {
 }
 
 .accordion-content {
-    max-height: 0; /* Closed by default */
+    max-height: 0; 
     overflow: hidden;
     transition: max-height 0.3s ease-out;
     background: #fafafa;
@@ -804,7 +804,7 @@ h1, h2, h3 {
 }
 
 .accordion-item.active .accordion-header span {
-    transform: rotate(45deg); /* Change + to x */
+    transform: rotate(45deg); 
 }
 
 @media (max-width: 768px) {
@@ -812,27 +812,27 @@ h1, h2, h3 {
 }
 
 
-/* 1. Make the table scrollable on mobile */
+
 .table-responsive {
     width: 100%;
-    overflow-x: auto; /* This creates the horizontal scrollbar if the table is too wide */
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iPhones */
+    overflow-x: auto; 
+    -webkit-overflow-scrolling: touch; 
     margin-top: 1rem;
 }
 
-/* 2. Fix Modal sizing for mobile */
+
 @media (max-width: 768px) {
     .modal-content {
-        width: 95%;         /* Use almost the whole screen */
-        margin: 10% auto;   /* Center it slightly better */
-        padding: 1.5rem;    /* Reduce padding so there is more room for text */
+        width: 95%;         
+        margin: 10% auto;   
+        padding: 1.5rem;    
     }
 
     .modal-content h2 {
-        font-size: 1.5rem;  /* Shrink the title so it doesn't wrap awkwardly */
+        font-size: 1.5rem;  
     }
     
-    /* Ensure the table cells don't get too squashed */
+    
     .cost-table th, .cost-table td {
         min-width: 100px; 
         font-size: 0.9rem;

@@ -47,7 +47,7 @@ function setDestinationOfTheDay() {
     `;
 }
 
-// Initialize functions when page loads
+
 window.onload = () => {
     setDestinationOfTheDay();
 };
@@ -59,7 +59,7 @@ if (newsletterForm) {
         e.preventDefault();
         const email = document.getElementById('newsletter-email').value;
         
-        // Save email to localStorage
+        
         localStorage.setItem('newsletterEmail', email);
         
         showNotification(`Thank you for subscribing, ${email}!`);
@@ -77,9 +77,9 @@ const closeModal = document.querySelector('.close-modal');
 
 // 1. Function to render cards
 function renderDestinations(data) {
-    if (!grid) return; // Stop if we aren't on the explorer page
+    if (!grid) return; 
     
-    grid.innerHTML = ""; // Clear current cards
+    grid.innerHTML = ""; 
 
     data.forEach(dest => {
         const card = document.createElement('div');
@@ -142,12 +142,12 @@ if (searchInput) searchInput.addEventListener('input', filterDestinations);
 if (continentFilter) continentFilter.addEventListener('change', filterDestinations);
 if (closeModal) closeModal.onclick = () => modal.style.display = "none";
 
-// Close modal if user clicks outside the box
+
 window.onclick = (event) => {
     if (event.target == modal) modal.style.display = "none";
 };
 
-// Initialize on load
+
 window.addEventListener('DOMContentLoaded', () => {
     renderDestinations(destinations);
 });
@@ -194,7 +194,7 @@ if (budgetForm) {
         progressBar.style.width = progressWidth;
         budgetResults.style.display = "block";
 
-        // Store current calculation temporarily for saving
+        
         budgetForm.dataset.lastTotal = total;
         budgetForm.dataset.lastDest = dest;
     });
@@ -202,7 +202,7 @@ if (budgetForm) {
 
 // --- LOCALSTORAGE LOGIC ---
 
-// Save budget to localStorage
+
 if (saveBudgetBtn) {
     saveBudgetBtn.addEventListener('click', () => {
         const budgetData = {
@@ -211,7 +211,7 @@ if (saveBudgetBtn) {
             date: new Date().toLocaleDateString()
         };
 
-        // Get existing budgets or create empty array
+        
         const saved = JSON.parse(localStorage.getItem('myBudgets')) || [];
         saved.push(budgetData);
         localStorage.setItem('myBudgets', JSON.stringify(saved));
@@ -221,7 +221,7 @@ if (saveBudgetBtn) {
     });
 }
 
-// Function to show saved budgets on page load
+
 function displaySavedBudgets() {
     if (!savedBudgetsList) return;
 
@@ -241,7 +241,7 @@ function displaySavedBudgets() {
     `).join('');
 }
 
-// Initialize on load
+
 window.addEventListener('DOMContentLoaded', () => {
     displaySavedBudgets();
 });
@@ -262,15 +262,14 @@ if (surpriseBtn) {
 
         // 1. Filter destinations based on user choice
         const filtered = destinations.filter(dest => {
-            // Check if category matches
+            
             const typeMatch = dest.category === type;
             
-            // Budget Logic: We'll map 'low' to budget, 'medium' to moderate, 'high' to luxury
-            // Since we don't have a simple 'budget' field, we just check if it exists in costs
+            
             return typeMatch; 
         });
 
-        // Fallback: If no exact match, just use all destinations so the user isn't stuck
+        
         const finalPool = filtered.length > 0 ? filtered : destinations;
 
         // 2. Pick a random one
@@ -282,7 +281,7 @@ if (surpriseBtn) {
         resultDesc.innerText = randomDest.description;
         generatorResult.style.display = "block";
 
-        // Store current result for saving to wishlist
+        
         generatorResult.dataset.currentDest = JSON.stringify(randomDest);
     });
 }
@@ -295,7 +294,7 @@ if (saveWishlistBtn) {
         
         const wishlist = JSON.parse(localStorage.getItem('travelWishlist')) || [];
         
-        // Avoid duplicates
+        
         if (!wishlist.some(item => item.id === dest.id)) {
             wishlist.push(dest);
             localStorage.setItem('travelWishlist', JSON.stringify(wishlist));
@@ -325,7 +324,7 @@ function displayWishlist() {
     `).join('');
 }
 
-// Initialize on load
+
 window.addEventListener('DOMContentLoaded', () => {
     displayWishlist();
 });
@@ -347,27 +346,27 @@ soundButtons.forEach(btn => {
     btn.addEventListener('click', () => {
         const soundType = btn.dataset.sound;
 
-        // Stop current sound
+        
         if (currentPlaying) {
             currentPlaying.pause();
             currentPlaying.currentTime = 0;
         }
 
-        // Handle "Stop All"
+        
         if (!soundType) {
             soundStatus.innerText = "Currently: Silence";
             document.querySelectorAll('.sound-btn').forEach(b => b.classList.remove('active'));
             return;
         }
 
-        // Play new sound
+        
         currentPlaying = sounds[soundType];
         currentPlaying.loop = true;
         currentPlaying.play();
         
         soundStatus.innerText = `Currently: Playing ${soundType} sounds...`;
         
-        // Update active button styling
+        
         document.querySelectorAll('.sound-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
     });
@@ -379,11 +378,11 @@ const trackerList = document.getElementById('tracker-list');
 function renderTracker() {
     if (!trackerList) return;
 
-    // Load saved data from localStorage
+    
     const userProgress = JSON.parse(localStorage.getItem('travelProgress')) || {};
 
     trackerList.innerHTML = destinations.map(dest => {
-        const status = userProgress[dest.id] || "none"; // "visited", "planned", or "none"
+        const status = userProgress[dest.id] || "none"; 
         
         return `
             <div class="tracker-row">
@@ -399,11 +398,11 @@ function renderTracker() {
     }).join('');
 }
 
-// We make this function global so the onclick in HTML can find it
+
 window.updateStatus = (id, newStatus) => {
     const userProgress = JSON.parse(localStorage.getItem('travelProgress')) || {};
     
-    // If user clicks the same status, remove it (toggle)
+    
     if (userProgress[id] === newStatus) {
         delete userProgress[id];
     } else {
@@ -411,10 +410,10 @@ window.updateStatus = (id, newStatus) => {
     }
 
     localStorage.setItem('travelProgress', JSON.stringify(userProgress));
-    renderTracker(); // Re-render to show updated colors
+    renderTracker(); 
 };
 
-// Initialize on load
+
 window.addEventListener('DOMContentLoaded', () => {
     renderTracker();
 });
@@ -429,7 +428,7 @@ accordionHeaders.forEach(header => {
     header.addEventListener('click', () => {
         const item = header.parentElement;
         
-        // Close other open items (Optional, but looks cleaner)
+        
         document.querySelectorAll('.accordion-item').forEach(otherItem => {
             if (otherItem !== item) otherItem.classList.remove('active');
         });
@@ -446,15 +445,15 @@ if (feedbackForm) {
     feedbackForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        // Get values
+        
         const name = document.getElementById('user-name').value.trim();
         const email = document.getElementById('user-email').value.trim();
         const message = document.getElementById('user-message').value.trim();
 
-        // Validation Flags
+        
         let isValid = true;
 
-        // Name Validation
+        
         if (name === "") {
             document.getElementById('name-error').style.display = "block";
             isValid = false;
@@ -462,7 +461,7 @@ if (feedbackForm) {
             document.getElementById('name-error').style.display = "none";
         }
 
-        // Email Validation (Regex)
+        
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailPattern.test(email)) {
             document.getElementById('email-error').style.display = "block";
@@ -471,7 +470,7 @@ if (feedbackForm) {
             document.getElementById('email-error').style.display = "none";
         }
 
-        // Message Validation
+        
         if (message === "") {
             document.getElementById('message-error').style.display = "block";
             isValid = false;
@@ -480,17 +479,17 @@ if (feedbackForm) {
         }
 
         if (isValid) {
-            // Store in localStorage
+            
             const feedbackData = { name, email, message, date: new Date().toLocaleString() };
             const allFeedback = JSON.parse(localStorage.getItem('userFeedback')) || [];
             allFeedback.push(feedbackData);
             localStorage.setItem('userFeedback', JSON.stringify(allFeedback));
 
-            // Show success and reset form
+            
             successBanner.style.display = "block";
             feedbackForm.reset();
             
-            // Hide success message after 5 seconds
+            
             setTimeout(() => { successBanner.style.display = "none"; }, 5000);
         }
     });
